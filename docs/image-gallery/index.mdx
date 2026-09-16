@@ -1,0 +1,27 @@
+---
+title: 图展
+sidebar_label: 图展
+description: 一组简约陈列的图像作品
+hide_table_of_contents: true
+---
+
+import ImageGallery from '@site/src/components/ImageGallery';
+import image1 from './image-1.jpeg';
+
+<div className="image-gallery-page">
+
+# 图展
+
+<p className="image-gallery-lede">安静地看图。点击任一幅即可放大。</p>
+
+<ImageGallery
+  images={[
+    {
+      src: image1,
+      alt: '彩色肖像插画，人物被花与笑脸环绕',
+      caption: '肖像 · 花与笑脸',
+    },
+  ]}
+/>
+
+</div>

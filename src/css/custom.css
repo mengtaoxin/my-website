@@ -28,3 +28,18 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Image gallery exhibition page */
+.image-gallery-page h1 {
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.image-gallery-lede {
+  margin: 0 0 0.5rem;
+  max-width: 28rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
