@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   schedule:
-    # Monday 00:00 Beijing time (UTC+8) = Sunday 16:00 UTC
-    - cron: "0 16 * * 0"
+    # Every day 00:00 Beijing time (UTC+8) = 16:00 UTC
+    - cron: "0 16 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -12,11 +12,51 @@ concurrency:
 
 permissions:
   contents: read
+  deployments: read
   pages: write
   id-token: write
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.check.outputs.should_deploy }}
+    steps:
+      - name: Skip when nothing changed since the last deploy
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          mapfile -t ids < <(gh api --jq '.[].id' "/repos/${REPO}/deployments?environment=github-pages&per_page=30")
+
+          for id in "${ids[@]}"; do
+            [ -z "$id" ] && continue
+            success_count=$(gh api --jq '[.[] | select(.state == "success")] | length' "/repos/${REPO}/deployments/${id}/statuses")
+            if [ "$success_count" = "0" ]; then
+              continue
+            fi
+
+            deployed_sha=$(gh api --jq '.sha' "/repos/${REPO}/deployments/${id}")
+            if [ "$deployed_sha" = "$CURRENT_SHA" ]; then
+              echo "should_deploy=false" >> "$GITHUB_OUTPUT"
+              echo "No updates since last successful deployment (${CURRENT_SHA}). Skipping."
+            else
+              echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+              echo "Repository updated since last deployment (${deployed_sha} -> ${CURRENT_SHA})."
+            fi
+            exit 0
+          done
+
+          echo "should_deploy=true" >> "$GITHUB_OUTPUT"
+          echo "No successful GitHub Pages deployment found. Deploying."
+
   build:
+    needs: check
+    if: needs.check.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

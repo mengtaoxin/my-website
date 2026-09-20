@@ -46,12 +46,17 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path: "pages",
+          routeBasePath: "pages",
           sidebarPath: "./sidebars.js",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/mengtaoxin/my-website/tree/main/",
         },
         blog: {
+          blogSidebarCount: 0,
+          postsPerPage: 10,
+          onUntruncatedBlogPosts: "ignore",
           showReadingTime: true,
           feedOptions: {
             type: ["rss", "atom"],
@@ -63,7 +68,6 @@ const config = {
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -71,6 +75,8 @@ const config = {
       }),
     ],
   ],
+
+  plugins: ["./src/plugins/homepage-blog"],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -97,6 +103,11 @@ const config = {
           {
             href: "https://github.com/facebook/docusaurus",
             label: "GitHub",
+            position: "right",
+          },
+          {
+            href: "https://x.com/dawnlightx123",
+            label: "X",
             position: "right",
           },
         ],
