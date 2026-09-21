@@ -1,43 +1,47 @@
-# Website
+# My Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+A personal site built with [Docusaurus](https://docusaurus.io/). It hosts a blog and a few static pages.
 
-## Installation
+**Live site:** [https://mengtaoxin.github.io/my-website/](https://mengtaoxin.github.io/my-website/)
+
+## What's inside
+
+- **Blog** — Markdown posts under `blog/` (notes on tech, language, and more)
+- **Pages** — Extra docs-style content under `pages/` (e.g. About, image gallery)
+- **Homepage** — A custom blog index instead of the default Docusaurus landing page
+
+## Requirements
+
+- Node.js 20 or newer
+
+## Getting started
 
 ```bash
 npm install
-```
-
-**Note**: feel free to use the package manager of your choice.
-
-## Local Development
-
-```bash
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This starts a local dev server with live reload.
 
-## Build
+## Scripts
 
-```bash
-npm run build
+| Command | Description |
+| --- | --- |
+| `npm run start` | Start the development server |
+| `npm run build` | Build static assets into `build/` |
+| `npm run serve` | Serve the production build locally |
+| `npm run clear` | Clear the Docusaurus cache |
+
+## Project layout
+
+```
+blog/          Blog posts (Markdown)
+pages/         Docs-style pages (About, galleries, …)
+src/           React pages, theme overrides, and custom components
+static/        Static assets (images, favicon, …)
+docusaurus.config.js
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## License
 
-## Deployment
-
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm run deploy
-```
-
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Private project. All rights reserved unless otherwise noted.
