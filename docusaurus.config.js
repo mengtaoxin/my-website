@@ -12,7 +12,7 @@ const baseUrl = "/my-website/";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
+  title: "Site by mengtaoxin",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
   headTags: [
@@ -111,7 +111,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: "My Site",
+        title: "Site by mengtaoxin",
         items: [
           {
             type: "docSidebar",
