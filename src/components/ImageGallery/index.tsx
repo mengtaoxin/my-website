@@ -1,14 +1,26 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect, useState, type ReactNode} from 'react';
 import styles from './styles.module.css';
 
-function padIndex(n) {
+export type GalleryImage = {
+  src: string;
+  alt?: string;
+  caption?: string;
+};
+
+type ImageGalleryProps = {
+  images?: GalleryImage[];
+};
+
+function padIndex(n: number): string {
   return String(n).padStart(2, '0');
 }
 
-export default function ImageGallery({images = []}) {
-  const [activeIndex, setActiveIndex] = useState(null);
+export default function ImageGallery({
+  images = [],
+}: ImageGalleryProps): ReactNode {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const isOpen = activeIndex !== null;
-  const active = isOpen ? images[activeIndex] : null;
+  const active = isOpen ? images[activeIndex] : undefined;
 
   const close = useCallback(() => setActiveIndex(null), []);
 
@@ -27,7 +39,7 @@ export default function ImageGallery({images = []}) {
       return undefined;
     }
 
-    const onKeyDown = (event) => {
+    const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         close();
       } else if (event.key === 'ArrowLeft') {
@@ -60,8 +72,7 @@ export default function ImageGallery({images = []}) {
               type="button"
               className={styles.trigger}
               onClick={() => setActiveIndex(index)}
-              aria-label={`查看大图：${image.caption || image.alt || `作品 ${index + 1}`}`}
-            >
+              aria-label={`查看大图：${image.caption || image.alt || `作品 ${index + 1}`}`}>
               <div className={styles.frame}>
                 <img
                   className={styles.image}
@@ -88,14 +99,12 @@ export default function ImageGallery({images = []}) {
           role="dialog"
           aria-modal="true"
           aria-label={active.caption || active.alt || '图片预览'}
-          onClick={close}
-        >
+          onClick={close}>
           <button
             type="button"
             className={styles.close}
             onClick={close}
-            aria-label="关闭"
-          >
+            aria-label="关闭">
             ×
           </button>
 
@@ -108,8 +117,7 @@ export default function ImageGallery({images = []}) {
                   event.stopPropagation();
                   showPrev();
                 }}
-                aria-label="上一张"
-              >
+                aria-label="上一张">
                 ‹
               </button>
               <button
@@ -119,8 +127,7 @@ export default function ImageGallery({images = []}) {
                   event.stopPropagation();
                   showNext();
                 }}
-                aria-label="下一张"
-              >
+                aria-label="下一张">
                 ›
               </button>
             </>
@@ -128,14 +135,13 @@ export default function ImageGallery({images = []}) {
 
           <figure
             className={styles.lightboxFigure}
-            onClick={(event) => event.stopPropagation()}
-          >
+            onClick={(event) => event.stopPropagation()}>
             <img
               className={styles.lightboxImage}
               src={active.src}
               alt={active.alt || active.caption || ''}
             />
-            {active.caption ? (
+            {active.caption && activeIndex !== null ? (
               <figcaption className={styles.lightboxCaption}>
                 {padIndex(activeIndex + 1)} · {active.caption}
               </figcaption>

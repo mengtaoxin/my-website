@@ -1,11 +1,10 @@
-// @ts-check
-
 import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
 const baseUrl = '/my-website/';
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config: Config = {
   title: 'Site by mengtaoxin',
   tagline: 'Notes, pages, and images',
   favicon: 'img/favicon.ico',
@@ -58,12 +57,11 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           path: 'pages',
           routeBasePath: 'pages',
-          sidebarPath: './sidebars.js',
+          sidebarPath: './sidebars.ts',
         },
         blog: {
           blogSidebarCount: 0,
@@ -81,62 +79,60 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-      }),
+      } satisfies Preset.Options,
     ],
   ],
 
-  plugins: ['./src/plugins/homepage-blog'],
+  plugins: ['./src/plugins/homepage-blog.ts'],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      image: 'img/icon-512.png',
-      colorMode: {
-        defaultMode: 'light',
-        respectPrefersColorScheme: true,
-      },
-      navbar: {
-        title: 'Site by mengtaoxin',
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'pagesSidebar',
-            position: 'left',
-            label: 'Pages',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/mengtaoxin/my-website',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
-            href: 'https://x.com/dawnlightx123',
-            label: 'X',
-            position: 'right',
-          },
-          {
-            href: 'https://steamcommunity.com/id/mengtaoxin/',
-            label: 'Steam',
-            position: 'right',
-          },
-          {
-            href: 'pathname:///blog/rss.xml',
-            label: 'RSS',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'light',
-        links: [],
-        copyright: `Copyright © ${new Date().getFullYear()} mengtaoxin.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
-    }),
+  themeConfig: {
+    image: 'img/icon-512.png',
+    colorMode: {
+      defaultMode: 'light',
+      respectPrefersColorScheme: true,
+    },
+    navbar: {
+      title: 'Site by mengtaoxin',
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'pagesSidebar',
+          position: 'left',
+          label: 'Pages',
+        },
+        {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          href: 'https://github.com/mengtaoxin/my-website',
+          label: 'GitHub',
+          position: 'right',
+        },
+        {
+          href: 'https://x.com/dawnlightx123',
+          label: 'X',
+          position: 'right',
+        },
+        {
+          href: 'https://steamcommunity.com/id/mengtaoxin/',
+          label: 'Steam',
+          position: 'right',
+        },
+        {
+          href: 'pathname:///blog/rss.xml',
+          label: 'RSS',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'light',
+      links: [],
+      copyright: `Copyright © ${new Date().getFullYear()} mengtaoxin.`,
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
 };
 
 export default config;
