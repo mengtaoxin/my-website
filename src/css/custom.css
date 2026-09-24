@@ -1,10 +1,3 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -17,7 +10,6 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -30,16 +22,26 @@
 }
 
 /* Image gallery exhibition page */
+.image-gallery-page {
+  --gallery-page-title-gap: 0.35rem;
+  --gallery-page-title-weight: 500;
+  --gallery-page-title-tracking: 0.04em;
+  --gallery-page-lede-gap: 0.5rem;
+  --gallery-page-lede-max: 28rem;
+  --gallery-page-lede-size: 0.95rem;
+  --gallery-page-lede-leading: 1.6;
+}
+
 .image-gallery-page h1 {
-  margin-bottom: 0.35rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  margin-bottom: var(--gallery-page-title-gap);
+  font-weight: var(--gallery-page-title-weight);
+  letter-spacing: var(--gallery-page-title-tracking);
 }
 
 .image-gallery-lede {
-  margin: 0 0 0.5rem;
-  max-width: 28rem;
+  margin: 0 0 var(--gallery-page-lede-gap);
+  max-width: var(--gallery-page-lede-max);
   color: var(--ifm-color-emphasis-600);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--gallery-page-lede-size);
+  line-height: var(--gallery-page-lede-leading);
 }

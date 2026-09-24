@@ -1,4 +1,10 @@
 .list {
+  --blog-list-gap: 1.25rem;
+  --blog-list-padding-block: 0.85rem;
+  --blog-list-title-size: 1.15rem;
+  --blog-list-title-weight: 600;
+  --blog-list-date-size: 0.9rem;
+
   list-style: none;
   margin: 0;
   padding: 0;
@@ -8,12 +14,12 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1.25rem;
-  padding: 0.85rem 0;
+  gap: var(--blog-list-gap);
+  padding: var(--blog-list-padding-block) 0;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   color: var(--ifm-font-color-base);
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: var(--blog-list-title-size);
+  font-weight: var(--blog-list-title-weight);
   text-decoration: none;
 }
 
@@ -24,7 +30,7 @@
 .date {
   flex-shrink: 0;
   color: var(--ifm-color-emphasis-600);
-  font-size: 0.9rem;
+  font-size: var(--blog-list-date-size);
   font-weight: 400;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
