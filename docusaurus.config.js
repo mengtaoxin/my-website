@@ -112,6 +112,11 @@ const config = {
             position: "right",
           },
           {
+            href: "https://steamcommunity.com/id/mengtaoxin/",
+            label: "Steam",
+            position: "right",
+          },
+          {
             href: "pathname:///blog/rss.xml",
             label: "RSS",
             position: "right",
