@@ -61,6 +61,7 @@ const config = {
           feedOptions: {
             type: ["rss", "atom"],
             xslt: true,
+            title: "Blogs by mengtaoxin",
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
