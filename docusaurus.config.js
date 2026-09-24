@@ -8,11 +8,41 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const baseUrl = "/my-website/";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "My Site",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: `${baseUrl}img/favicon-16x16.png`,
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: `${baseUrl}img/favicon-32x32.png`,
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: `${baseUrl}img/apple-touch-icon.png`,
+      },
+    },
+  ],
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -23,7 +53,7 @@ const config = {
   url: "https://mengtaoxin.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/my-website/",
+  baseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -82,8 +112,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/icon-512.png",
       colorMode: {
         respectPrefersColorScheme: true,
       },
