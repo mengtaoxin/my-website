@@ -111,6 +111,11 @@ const config = {
             label: "X",
             position: "right",
           },
+          {
+            href: "pathname:///blog/rss.xml",
+            label: "RSS",
+            position: "right",
+          },
         ],
       },
       footer: {
