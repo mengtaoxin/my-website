@@ -92,6 +92,7 @@ const config = {
     ({
       image: 'img/icon-512.png',
       colorMode: {
+        defaultMode: 'light',
         respectPrefersColorScheme: true,
       },
       navbar: {
@@ -127,7 +128,7 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [],
         copyright: `Copyright © ${new Date().getFullYear()} mengtaoxin.`,
       },
