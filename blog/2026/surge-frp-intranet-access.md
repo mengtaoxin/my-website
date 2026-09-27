@@ -1,5 +1,5 @@
 ---
-title: "使用 surge 和 frp 访问内网服务"
+title: '使用 surge 和 frp 访问内网服务'
 date: 2026-08-05
 language: chinese
 ---
@@ -40,7 +40,7 @@ auth.token = "123456"
 
 ```yaml
 # docker-compose.yml
-version: "3.8"
+version: '3.8'
 
 services:
   frpc:

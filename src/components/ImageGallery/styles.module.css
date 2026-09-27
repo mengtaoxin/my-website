@@ -8,11 +8,7 @@
   /* Layout */
   --gallery-cell-min: 240px;
   --gallery-radius: 2px;
-  --gallery-frame-tint: color-mix(
-    in srgb,
-    var(--ifm-color-emphasis-200) 55%,
-    transparent
-  );
+  --gallery-frame-tint: color-mix(in srgb, var(--ifm-color-emphasis-200) 55%, transparent);
 
   /* Type */
   --gallery-index-size: 0.7rem;
@@ -73,39 +69,26 @@
   margin: 0;
   padding: 0;
   opacity: 0;
-  animation: galleryReveal var(--gallery-reveal-duration) var(--gallery-ease)
-    forwards;
+  animation: galleryReveal var(--gallery-reveal-duration) var(--gallery-ease) forwards;
 }
 
 .item:nth-child(1) {
-  animation-delay: calc(
-    var(--gallery-stagger-base) + var(--gallery-stagger-step) * 0
-  );
+  animation-delay: calc(var(--gallery-stagger-base) + var(--gallery-stagger-step) * 0);
 }
 .item:nth-child(2) {
-  animation-delay: calc(
-    var(--gallery-stagger-base) + var(--gallery-stagger-step) * 1
-  );
+  animation-delay: calc(var(--gallery-stagger-base) + var(--gallery-stagger-step) * 1);
 }
 .item:nth-child(3) {
-  animation-delay: calc(
-    var(--gallery-stagger-base) + var(--gallery-stagger-step) * 2
-  );
+  animation-delay: calc(var(--gallery-stagger-base) + var(--gallery-stagger-step) * 2);
 }
 .item:nth-child(4) {
-  animation-delay: calc(
-    var(--gallery-stagger-base) + var(--gallery-stagger-step) * 3
-  );
+  animation-delay: calc(var(--gallery-stagger-base) + var(--gallery-stagger-step) * 3);
 }
 .item:nth-child(5) {
-  animation-delay: calc(
-    var(--gallery-stagger-base) + var(--gallery-stagger-step) * 4
-  );
+  animation-delay: calc(var(--gallery-stagger-base) + var(--gallery-stagger-step) * 4);
 }
 .item:nth-child(6) {
-  animation-delay: calc(
-    var(--gallery-stagger-base) + var(--gallery-stagger-step) * 5
-  );
+  animation-delay: calc(var(--gallery-stagger-base) + var(--gallery-stagger-step) * 5);
 }
 .item:nth-child(n + 7) {
   animation-delay: var(--gallery-stagger-cap);
@@ -226,8 +209,7 @@
 @keyframes lightboxFigureIn {
   from {
     opacity: 0;
-    transform: scale(var(--lightbox-figure-scale))
-      translateY(var(--lightbox-figure-distance));
+    transform: scale(var(--lightbox-figure-scale)) translateY(var(--lightbox-figure-distance));
   }
   to {
     opacity: 1;

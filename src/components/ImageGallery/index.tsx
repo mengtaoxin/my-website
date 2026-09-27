@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState, type ReactNode} from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import styles from './styles.module.css';
 
 export type GalleryImage = {
@@ -11,13 +11,13 @@ type ImageGalleryProps = {
   images?: GalleryImage[];
 };
 
+const NO_IMAGES: GalleryImage[] = [];
+
 function padIndex(n: number): string {
   return String(n).padStart(2, '0');
 }
 
-export default function ImageGallery({
-  images = [],
-}: ImageGalleryProps): ReactNode {
+export default function ImageGallery({ images = NO_IMAGES }: ImageGalleryProps): ReactNode {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const isOpen = activeIndex !== null;
   const active = isOpen ? images[activeIndex] : undefined;
@@ -25,9 +25,7 @@ export default function ImageGallery({
   const close = useCallback(() => setActiveIndex(null), []);
 
   const showPrev = useCallback(() => {
-    setActiveIndex((i) =>
-      i === null ? null : (i - 1 + images.length) % images.length,
-    );
+    setActiveIndex((i) => (i === null ? null : (i - 1 + images.length) % images.length));
   }, [images.length]);
 
   const showNext = useCallback(() => {
@@ -67,12 +65,13 @@ export default function ImageGallery({
     <div className={styles.gallery}>
       <ul className={styles.grid}>
         {images.map((image, index) => (
-          <li key={`${image.src}-${index}`} className={styles.item}>
+          <li key={image.src} className={styles.item}>
             <button
               type="button"
               className={styles.trigger}
               onClick={() => setActiveIndex(index)}
-              aria-label={`查看大图：${image.caption || image.alt || `作品 ${index + 1}`}`}>
+              aria-label={`查看大图：${image.caption || image.alt || `作品 ${index + 1}`}`}
+            >
               <div className={styles.frame}>
                 <img
                   className={styles.image}
@@ -84,9 +83,7 @@ export default function ImageGallery({
               </div>
               <div className={styles.meta}>
                 <span className={styles.index}>{padIndex(index + 1)}</span>
-                {image.caption ? (
-                  <p className={styles.caption}>{image.caption}</p>
-                ) : null}
+                {image.caption ? <p className={styles.caption}>{image.caption}</p> : null}
               </div>
             </button>
           </li>
@@ -99,12 +96,9 @@ export default function ImageGallery({
           role="dialog"
           aria-modal="true"
           aria-label={active.caption || active.alt || '图片预览'}
-          onClick={close}>
-          <button
-            type="button"
-            className={styles.close}
-            onClick={close}
-            aria-label="关闭">
+          onClick={close}
+        >
+          <button type="button" className={styles.close} onClick={close} aria-label="关闭">
             ×
           </button>
 
@@ -117,7 +111,8 @@ export default function ImageGallery({
                   event.stopPropagation();
                   showPrev();
                 }}
-                aria-label="上一张">
+                aria-label="上一张"
+              >
                 ‹
               </button>
               <button
@@ -127,15 +122,14 @@ export default function ImageGallery({
                   event.stopPropagation();
                   showNext();
                 }}
-                aria-label="下一张">
+                aria-label="下一张"
+              >
                 ›
               </button>
             </>
           ) : null}
 
-          <figure
-            className={styles.lightboxFigure}
-            onClick={(event) => event.stopPropagation()}>
+          <figure className={styles.lightboxFigure} onClick={(event) => event.stopPropagation()}>
             <img
               className={styles.lightboxImage}
               src={active.src}

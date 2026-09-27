@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 
 import styles from './styles.module.css';
@@ -22,7 +22,7 @@ function calendarDate(date: string | Date | undefined): string | null {
   return match ? match[1]! : null;
 }
 
-export default function BlogTitleList({posts}: BlogTitleListProps): ReactNode {
+export default function BlogTitleList({ posts }: BlogTitleListProps): ReactNode {
   return (
     <ul className={styles.list}>
       {posts.map((post) => {

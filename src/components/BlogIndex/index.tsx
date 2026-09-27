@@ -1,9 +1,7 @@
-import {useState, type ReactNode} from 'react';
+import { useState, type ReactNode } from 'react';
 import clsx from 'clsx';
-import {usePluginData} from '@docusaurus/useGlobalData';
-import BlogTitleList, {
-  type BlogListItem,
-} from '@site/src/components/BlogTitleList';
+import { usePluginData } from '@docusaurus/useGlobalData';
+import BlogTitleList, { type BlogListItem } from '@site/src/components/BlogTitleList';
 
 const POSTS_PER_PAGE = 10;
 
@@ -12,7 +10,7 @@ type HomepageBlogData = {
 };
 
 export default function BlogIndex(): ReactNode {
-  const {posts} = usePluginData('homepage-blog') as HomepageBlogData;
+  const { posts } = usePluginData('homepage-blog') as HomepageBlogData;
   const [page, setPage] = useState(1);
   const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
   const currentPage = Math.min(page, totalPages);
@@ -28,18 +26,17 @@ export default function BlogIndex(): ReactNode {
             <button
               type="button"
               className="pagination-nav__link"
-              onClick={() => setPage(currentPage - 1)}>
+              onClick={() => setPage(currentPage - 1)}
+            >
               <div className="pagination-nav__label">Newer entries</div>
             </button>
           )}
           {currentPage < totalPages && (
             <button
               type="button"
-              className={clsx(
-                'pagination-nav__link',
-                'pagination-nav__link--next',
-              )}
-              onClick={() => setPage(currentPage + 1)}>
+              className={clsx('pagination-nav__link', 'pagination-nav__link--next')}
+              onClick={() => setPage(currentPage + 1)}
+            >
               <div className="pagination-nav__label">Older entries</div>
             </button>
           )}
