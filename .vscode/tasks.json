@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "New Blog Post",
+      "type": "shell",
+      "command": "dir=\"blog/$(date +%Y)\"; file=\"$dir/$(date +%s).md\"; mkdir -p \"$dir\" && printf -- \"---\\ntitle: ''\\ndate: %s\\nlanguage: chinese\\n---\\n\\n\" \"$(date +%Y-%m-%d)\" > \"$file\" && echo \"Created $file\" && if command -v cursor >/dev/null; then cursor \"$file\"; elif command -v code >/dev/null; then code \"$file\"; fi",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ]
+}
