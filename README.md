@@ -25,14 +25,16 @@ This starts a local dev server with live reload.
 
 ## Scripts
 
-| Command         | Description                        |
-| --------------- | ---------------------------------- |
-| `npm run start` | Start the development server       |
-| `npm run build` | Build static assets into `build/`  |
-| `npm run serve` | Serve the production build locally |
-| `npm run clear` | Clear the Docusaurus cache         |
-| `npm run lint`  | Lint with Oxlint                   |
-| `npm run fmt`   | Format with Oxfmt                  |
+| Command          | Description                        |
+| ---------------- | ---------------------------------- |
+| `npm run start`  | Start the development server       |
+| `npm run build`  | Build static assets into `build/`  |
+| `npm run serve`  | Serve the production build locally |
+| `npm run clear`  | Clear the Docusaurus cache         |
+| `npm run lint`   | Lint with Oxlint                   |
+| `npm run format` | Format with Oxfmt (writes files)   |
+| `npm run check`  | Format check, lint, and type-check |
+| `npm run verify` | Same as `check` (no unit tests)    |
 
 ## Project layout
 
