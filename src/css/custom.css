@@ -38,6 +38,24 @@
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
 }
 
+/* Blog post detail page */
+.blog-post-page {
+  --blog-post-title-size: 1.75rem;
+  --blog-post-title-size-sm: 1.5rem;
+  --blog-post-title-weight: 500;
+}
+
+.blog-post-page article > header h1 {
+  font-size: var(--blog-post-title-size);
+  font-weight: var(--blog-post-title-weight);
+}
+
+@media (max-width: 576px) {
+  .blog-post-page article > header h1 {
+    font-size: var(--blog-post-title-size-sm);
+  }
+}
+
 /* Image gallery exhibition page */
 .image-gallery-page {
   --gallery-page-title-gap: 0.35rem;

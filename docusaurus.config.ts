@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const baseUrl = '/my-website/';
 
 const config: Config = {
-  title: 'Site by mengtaoxin',
+  title: 'Moments',
   tagline: 'Notes, pages, and images',
   favicon: 'img/favicon.ico',
   headTags: [
@@ -92,7 +92,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Site by mengtaoxin',
+      title: 'Moments',
       items: [
         {
           type: 'docSidebar',
